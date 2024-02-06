@@ -1,0 +1,11 @@
+# Dependency directories
+node_modules/
+
+# Parcel cache
+.parcel-cache
+
+# Build output
+dist/
+
+# Environment variables
+.env

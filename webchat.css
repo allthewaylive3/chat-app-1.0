@@ -1,0 +1,448 @@
+.x1z2Chat-chatbot-toggler,
+.x1z2Chat-chatbot-header,
+.x1z2Chat-chatbox .x1z2Chat-chat p {
+  background: var(--primary-color);
+}
+
+.x1z2Chat-chat-input span {
+  color: var(--primary-color);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+/* body {
+  background: #E3F2FD;
+} */
+.x1z2Chat-chatbot-toggler {
+  position: fixed;
+  bottom: 30px;
+  right: 35px;
+  outline: none;
+  border: none;
+  height: 70px;
+  width: 70px;
+  display: flex;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+  z-index: 998;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 4px, rgba(0, 0, 0, 0.2) 0px 2px 12px;
+}
+.x1z2Chat-show-chatbot .x1z2Chat-chatbot-toggler {
+  transform: rotate(90deg);
+}
+.x1z2Chat-chatbot-toggler span {
+  color: #fff;
+  position: absolute;
+  font-size: 34px;
+}
+.x1z2Chat-chatbot-toggler span:last-child,
+.x1z2Chat-show-chatbot .x1z2Chat-chatbot-toggler span:first-child  {
+  opacity: 0;
+}
+.x1z2Chat-show-chatbot .x1z2Chat-chatbot-toggler span:last-child {
+  opacity: 1;
+}
+.x1z2Chat-chatbot {
+  font-family: 'Inter', sans-serif;
+  position: fixed;
+  right: 46px;
+  bottom: 113px;
+  width: 420px;
+  background: #fff;
+  border-radius: 15px;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(0.5);
+  transform-origin: bottom right;
+  box-shadow: 0 0 128px 0 rgba(0,0,0,0.1),
+              0 32px 64px -48px rgba(0,0,0,0.5);
+  transition: all 0.25s ease-in-out;
+	z-index: 1000;
+  
+}
+
+.x1z2Chat-chatbot-header {
+  padding: 16px;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  position: relative;
+}
+
+.x1z2Chat-chatbot-logo {
+  width: 50px; /* Keep the width as per your current design */
+  height: 50px; /* Make height equal to width for a circle */
+  border-radius: 50%; /* Makes the image round */
+  border: 3px solid white; /* Adds a white border, adjust thickness as needed */
+  object-fit: cover; /* Ensures the image covers the frame without distorting */
+  margin-right: 15px; /* Retain your existing margin */
+}
+
+
+.x1z2Chat-chatbot-header-text h2 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 4px;
+  color: #fff;
+  font-family: 'Inter', sans-serif;
+}
+
+.x1z2Chat-online-status::before {
+  content: ""!important;
+  background-color: #4ece3d!important;
+  vertical-align: middle!important;
+  width: 8px!important;
+  height: 8px!important;
+  margin-right: 5px!important;
+  flex: 0 0 auto!important;
+  border-radius: 50%!important; /* Makes it perfectly circular */
+  display: inline-block!important; /* This will help in aligning it with the text */
+  position: relative!important;
+  top: -1.6px!important;
+}
+
+
+.x1z2Chat-chatbot-header-text p {
+  font-size: 0.92rem;
+  font-weight: 300;
+}
+
+.x1z2Chat-show-chatbot .x1z2Chat-chatbot {
+  opacity: 1;
+  pointer-events: auto;
+  transform: scale(1);
+}
+/* .chatbot header {
+  padding: 16px 0;
+  position: relative;
+  text-align: center;
+  color: #fff;
+  background: #724ae8;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+} */
+.x1z2Chat-chatbot header span {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  display: none;
+  cursor: pointer;
+  transform: translateY(-50%);
+}
+header h2 {
+  font-size: 1.4rem;
+}
+.x1z2Chat-chatbot .x1z2Chat-chatbox {
+  overflow-y: auto;
+  height: 510px;
+  padding: 30px 20px 100px;
+}
+.x1z2Chat-chatbot :where(.x1z2Chat-chatbox, textarea)::-webkit-scrollbar {
+  width: 6px;
+}
+.x1z2Chat-chatbot :where(.x1z2Chat-chatbox, textarea)::-webkit-scrollbar-track {
+  background: #fff;
+  border-radius: 25px;
+}
+.x1z2Chat-chatbot :where(.x1z2Chat-chatbox, textarea)::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 25px;
+}
+.x1z2Chat-chatbox .x1z2Chat-chat {
+  display: flex;
+  list-style: none;
+}
+.x1z2Chat-chatbox .outgoing {
+  margin: 20px 0;
+  justify-content: flex-end;
+}
+/* .chatbox .incoming span {
+  width: 45px;
+  height: 45px;
+  color: #fff;
+  cursor: default;
+  text-align: center;
+  line-height: 32px;
+  align-self: flex-end;
+  background: #724ae8;
+  border-radius: 27px;
+  margin: 0 10px 7px 0;
+} */
+
+.x1z2Chat-chatbox .incoming .x1z2Chat-assistant-avatar {
+  width: 45px; /* Adjust to your preference */
+  height: 45px; /* Make height equal to width for a circle */
+  object-fit: cover; /* Ensures the image covers the frame without distorting */
+  border-radius: 50%; /* Makes the image round */
+  align-self: flex-end;
+  margin: 0 10px -25px 0px;
+  /* margin: 0 10px 7px 0; */
+}
+
+.x1z2Chat-chatbox .x1z2Chat-chat p {
+  white-space: pre-wrap;
+  padding: 12px 17px;
+  border-radius: 10px 10px 0 10px;
+  max-width: 78%;
+  color: #fff;
+  font-size: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 50px;
+  justify-content: center;
+}
+
+/* Styles specifically for links within chat messages */
+.x1z2Chat-chatbox .x1z2Chat-chat p a {
+    color: #007bff; /* standard blue color for links */
+    text-decoration: none; /* removes underline from links */
+}
+
+.x1z2Chat-chatbox .x1z2Chat-chat p a:hover,
+.x1z2Chat-chatbox .x1z2Chat-chat p a:focus {
+    text-decoration: underline; /* adds underline on hover for better user interaction */
+    color: #0056b3; /* slightly darker blue on hover for visual feedback */
+}
+
+.x1z2Chat-chatbox .x1z2Chat-chat p img {
+    max-width: 100%; /* Ensures image does not exceed the bubble's width */
+    height: auto; /* Keeps the aspect ratio of the image */
+    border-radius: 5px; /* Optional: Rounds the corners of the image */
+    cursor: pointer; /* Changes cursor to indicate the image is clickable */
+    display: block; /* Ensures the image takes its own line within the paragraph */
+    margin-top: 15px; /* Adds some space above the image */
+}
+
+.x1z2Chat-chatbox .incoming p {
+  border-radius: 10px 10px 10px 0;
+}
+
+.x1z2Chat-chatbox .x1z2Chat-chat p.error {
+  color: #721c24;
+  background: #f8d7da;
+}
+
+.x1z2Chat-chatbox .incoming p {
+  color: rgb(66, 75, 83);
+  background: rgb(234, 240, 246);
+  font-weight: 440;
+}
+
+.x1z2Chat-chatbox .incoming p strong {
+  display: inline-block;
+  padding-top: 15px;
+}
+
+.x1z2Chat-chatbot .x1z2Chat-chat-input {
+  display: flex;
+  gap: 5px;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background: #fff;
+  padding: 3px 20px;
+  border-top: 1px solid #ddd;
+}
+.x1z2Chat-chat-input textarea {
+  font-family: 'Inter', sans-serif;
+  height: 55px;
+  width: 100%;
+  border: none;
+  outline: none;
+  resize: none;
+  max-height: 180px;
+  padding: 15px 15px 15px 0;
+  font-size: 1rem;
+}
+.x1z2Chat-chat-input span {
+  align-self: flex-end;
+  cursor: pointer;
+  height: 55px;
+  display: flex;
+  align-items: center;
+  visibility: hidden;
+  font-size: 1.8rem;
+}
+.x1z2Chat-chat-input textarea:valid ~ span {
+  visibility: visible;
+}
+
+
+@media (max-width: 490px) {
+  .x1z2Chat-chatbot-toggler {
+    right: 20px;
+    bottom: 20px;
+  }
+  .x1z2Chat-chatbot {
+    right: 0;
+    bottom: 0;
+    height: 100%;
+    border-radius: 0;
+    width: 100%;
+  }
+  .x1z2Chat-chatbot .x1z2Chat-chatbox {
+    height: calc(100vh - 60px - 60px - 20px);
+    padding: 25px 15px 100px;
+    overflow-y: auto;
+  }
+  .x1z2Chat-chatbot .x1z2Chat-chat-input {
+    padding: 5px 15px;
+  }
+  .x1z2Chat-chatbot header span {
+    display: block;
+  }
+}
+
+
+/*
+Lightbox css
+*/
+
+.x1z2Chat-lightbox-modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+.x1z2Chat-lightbox-modal img {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+}
+
+.x1z2Chat-close-lightbox {
+    position: absolute;
+    top: 25px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/*
+Typing effect css
+*/
+
+
+.x1z2Chat-typing {
+  position: relative;
+}
+
+.x1z2Chat-typing span {
+  animation: blink 1.5s infinite;
+  animation-fill-mode: both;
+  height: 10px;
+  width: 10px;
+  background: #3b5998;
+  position: absolute;
+  left: 0;
+  top: 0;
+  border-radius: 50%;
+}
+
+.x1z2Chat-typing span:nth-child(2) {
+  animation-delay: .2s;
+  margin-left: 15px;
+}
+
+.x1z2Chat-typing span:nth-child(3) {
+  animation-delay: .4s;
+  margin-left: 30px;
+}
+
+@keyframes blink {
+  0% { opacity: .1; }
+  20% { opacity: 1; }
+  100% { opacity: .1; }
+}
+
+
+/*
+Popup window styling
+*/
+
+.x1z2Chat-chat-popup {
+  font-family: 'Urbanist', sans-serif;
+  color: #6f6f6f;
+  font-weight: 400;
+  line-height: 1.6;
+  position: fixed;
+  max-width: 250px; /* Maximum width for the popup */
+  width: auto; /* Allows the width to adjust based on content */
+  bottom: 110px; /* Adjust this value to place it over the chat icon */
+  right: 35px; /* Align with the chat icon, adjust as necessary */
+  background: white;
+  padding-right: 20px;
+  padding-left: 20px;
+  padding-top: 40px;
+  padding-bottom: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 999; /* Ensure it is above the chatbot-toggler */
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+
+.x1z2Chat-chat-popup .x1z2Chat-close-popup {
+  position: absolute;
+  top: -13px;
+  right: 3px;
+  cursor: pointer;
+  padding: 10px;
+  z-index: 3;
+  font-size: 25px;
+}
+
+.x1z2Chat-popup-assistant-avatar {
+  width: 45px; /* This can be changed to '3em' for example, to scale with font size */
+  height: 45px; /* Keep this the same as width to maintain a circle */
+  object-fit: cover;
+  border-radius: 50%;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: -22.5px; /* You can change this to '-1.5em' to scale with font size */
+  z-index: 2;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .x1z2Chat-popup-assistant-avatar {
+    width: 35px; /* Smaller size on small screens */
+    height: 35px;
+    top: -17.5px; /* Adjust accordingly */
+  }
+
+  .x1z2Chat-chat-popup {
+    padding-top: 30px; /* Less padding on small screens */
+    right: 20px; /* Adjust position for smaller screens */
+    bottom: 103px; /* Adjust position for smaller screens */
+  }
+}
+
+/* More media queries can be added for additional breakpoints */
+
+/* Hide images in the chat interface initially
+.chatbot img {
+  display: none;
+} */

@@ -6,3 +6,8 @@ node_modules/
 
 # Environment variables
 .env
+
+chat-embed.js
+test.html
+webchat.css
+webchat.js

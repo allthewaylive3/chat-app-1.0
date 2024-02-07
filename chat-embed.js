@@ -7,31 +7,33 @@ import('./webchat.js').then((module) => {
 import './webchat.css';
 
 function preloadResources(resources, htmlCallback, scriptCallback) {
-    let loadedCount = 0;
-    let totalResources = resources.length;
-    resources.forEach(resource => {
-        const tag = document.createElement(resource.type);
-        Object.entries(resource.attributes).forEach(([key, value]) => tag.setAttribute(key, value));
+    document.addEventListener('DOMContentLoaded', (event) => {
+        let loadedCount = 0;
+        let totalResources = resources.length;
+        resources.forEach(resource => {
+            const tag = document.createElement(resource.type);
+            Object.entries(resource.attributes).forEach(([key, value]) => tag.setAttribute(key, value));
 
-        tag.onload = () => {
-            loadedCount++;
-            if (resource.type === 'script' && typeof scriptCallback === 'function') {
-                scriptCallback(); // Call script callback if it's a function
+            tag.onload = () => {
+                loadedCount++;
+                if (resource.type === 'script' && typeof scriptCallback === 'function') {
+                    scriptCallback(); // Call script callback if it's a function
+                }
+                if (loadedCount === totalResources && typeof htmlCallback === 'function') {
+                    htmlCallback(); // Call HTML callback if it's a function
+                }
+            };
+
+            tag.onerror = () => {
+                console.error(`Error loading resource: ${resource.attributes.href || resource.attributes.src}`);
+            };
+
+            if (resource.type === 'link') {
+                document.head.appendChild(tag);
+            } else if (resource.type === 'script') {
+                document.body.appendChild(tag);
             }
-            if (loadedCount === totalResources && typeof htmlCallback === 'function') {
-                htmlCallback(); // Call HTML callback if it's a function
-            }
-        };        
-
-        tag.onerror = () => {
-            console.error(`Error loading resource: ${resource.attributes.href || resource.attributes.src}`);
-        };
-
-        if (resource.type === 'link') {
-            document.head.appendChild(tag);
-        } else if (resource.type === 'script') {
-            document.body.appendChild(tag);
-        }
+        });
     });
 }
 

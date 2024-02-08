@@ -1,10 +1,10 @@
-// At the top of your chat-embed.js or where it makes sense logically
-import('./webchat.js').then((module) => {
-    // Use the module here, if needed, or just ensure it's loaded
-    // console.log('webchat.js loaded');
-}).catch(err => console.error('Failed to load webchat.js', err));
+// // At the top of your chat-embed.js or where it makes sense logically
+// import('./webchat.js').then((module) => {
+//     // Use the module here, if needed, or just ensure it's loaded
+//     // console.log('webchat.js loaded');
+// }).catch(err => console.error('Failed to load webchat.js', err));
 
-import './webchat.css';
+// import './webchat.css';
 
 function preloadResources(resources, htmlCallback, scriptCallback) {
     document.addEventListener('DOMContentLoaded', (event) => {
